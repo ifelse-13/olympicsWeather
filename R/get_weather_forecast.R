@@ -28,6 +28,8 @@
 #'
 #' @family weather functions
 get_forecast <- function(value){
+
+
   # perfom
   perform_request <- function(lat,lon){
     url <- "https://api.open-meteo.com/v1/forecast"
@@ -64,6 +66,7 @@ get_forecast <- function(value){
     return(coordonnees)
   }
   # traetment
+
   # numerique
   get_forecast.numeric <- function(xy){
     if (!is.numeric(xy)) {
@@ -89,13 +92,17 @@ get_forecast <- function(value){
     table_finale <- get_forecast.numeric(vect_cord)
     return(table_finale)
   }
-# execution de la fonction
+  # execution de la fonction
   if (is.numeric(value)){
-    get_forecast.numeric(value)
+     resultat_num <- get_forecast.numeric(value)
+     return(resultat_num)
   }
   if(is.character(value)){
-    get_forecast.character(value)
+  resultat_char<- get_forecast.character(value)
+  return(resultat_char)
   }
+
+
 # fin
 }
 
